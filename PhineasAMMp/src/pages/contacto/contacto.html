@@ -15,6 +15,42 @@
 
 
 <ion-content padding>
+
+
+    <ion-list>
+        <ion-item>
+          <ion-label>Gaming</ion-label>
+          <ion-select [(ngModel)]="gaming">
+            <ion-option value="nes">NES</ion-option>
+            <ion-option value="n64">Nintendo64</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon name="call" item-start></ion-icon>
+            <h2>Teléfono</h2>
+            <p>
+              <button ion-button color="secondary" (click)="RealizarLlamada()"> 
+                2327-3900 
+               </button>
+          </p>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-icon name="pin" item-start></ion-icon>
+            <h2>Dirección</h2>
+            <p> 24 Av 15-40 zona 10, Guatemala</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="paper" item-start></ion-icon>
+            <h2>Encuesta</h2>
+            <p> <a href="https://www.google.com/intl/es/forms/about/"> Encuesta</a> </p>
+        </ion-item>
+      </ion-list>
+
   <button (click)="navigateLocation()">Navigate google maps</button>
-  
+
+
+
 </ion-content>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
-
+//import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 //import { InAppBrowser, AppAvailability, Device } from 'ionic-native';
 
@@ -23,7 +23,7 @@ export class ContactoPage {
   latitude:number ;
   longitude:number ;
     
-  constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation, private launchNavigator:LaunchNavigator) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public geolocation: Geolocation, private launchNavigator:LaunchNavigator) {
   }
 
   ionViewDidLoad() {
@@ -51,6 +51,19 @@ export class ContactoPage {
    })
  }
 
+/*
+OpenUrl(){
+  const browser = this.iab.create('https://ionic.io 108');
+  browser.show()
+}*/
 
+RealizarLlamada() {
+  const alert = this.alertCtrl.create({
+    title: 'Desea Llamar?',
+    //subTitle: 'Si!',
+    buttons: ['Llamar']
+  });
+  alert.present();
+}
 
 }
