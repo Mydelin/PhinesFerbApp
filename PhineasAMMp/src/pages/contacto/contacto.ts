@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { CallNumber } from '@ionic-native/call-number';
+
 //import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 //import { InAppBrowser, AppAvailability, Device } from 'ionic-native';
@@ -23,8 +25,8 @@ export class ContactoPage {
   latitude:number ;
   longitude:number ;
     
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public geolocation: Geolocation, private launchNavigator:LaunchNavigator) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public geolocation: Geolocation, private launchNavigator:LaunchNavigator , private callNumber: CallNumber) {
+ }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactoPage');
@@ -43,7 +45,7 @@ export class ContactoPage {
      app: this.launchNavigator.APP.GOOGLE_MAPS,
               start:[this.latitude,this.longitude]
        };
-   this.launchNavigator.navigate('London, ON',options)
+   this.launchNavigator.navigate('Nueva sede AMM, Guatemala',options)
    .then(success =>{
      console.log(success);
    },error=>{
@@ -58,12 +60,16 @@ OpenUrl(){
 }*/
 
 RealizarLlamada() {
-  const alert = this.alertCtrl.create({
+  /*const alert = this.alertCtrl.create({
     title: 'Desea Llamar?',
     //subTitle: 'Si!',
     buttons: ['Llamar']
   });
   alert.present();
+  */
+ this.callNumber.callNumber('47081567', true)
+  .then(res => console.log('Launched dialer!', res))
+  .catch(err => console.log('Error launching dialer', err));
 }
 
 }
